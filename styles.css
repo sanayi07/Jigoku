@@ -1,0 +1,420 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+.element{
+    width: 50%;
+}
+@media(max-width:800px){
+    body {
+    background: url(source/fondos/fondo.jpeg); /* Imagen de fondo */
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: #e2980f;
+    line-height: 1.7;
+}
+    .element{
+        width: 100%;
+    }
+}
+@media(min-width:400px){
+
+}
+@media(min-width:320px) and (max-width) and (orientation:landscape){
+    
+}
+body {
+    background: url(source/fondos/fondo.jpeg); /* Imagen de fondo */
+    background-size: 115%;
+    background-repeat: no-repeat;
+    color: #e2980f;
+    line-height: 1.7;
+}
+
+/* Paleta de colores */
+:root {
+    --morado-oscuro: #af1212;
+    --morado-medio: #86350f;
+    --morado-claro: #4e0a0f;
+    --azul-oscuro: #aa6d34;
+    --azul-medio: #2519d2;
+    --azul-claro: #42cbf5;
+    --negro: #121212;
+    --gris-oscuro: #1e1e1e;
+    --gris-medio: #424242;
+    --gris-claro: #db881c;
+}
+
+/* Header y navegación */
+header {
+    background: linear-gradient(135deg, var(--morado-oscuro), var(--negro));
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 20px ;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #e2980f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 4px rgba(219, 205, 8, 0.747);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2rem;
+}
+
+.nav-links a {
+    color: #e2980f;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.nav-links a:hover {
+    background-color: rgba(11, 103, 146, 0.1);
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 1.5rem auto;
+    padding: 0 2rem;
+}
+
+/* Hero section */
+.hero {
+    text-align: center;
+    padding: 5rem 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url('https://source.unsplash.com/random/1600x900?space,galaxy') no-repeat center center/cover;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+    box-shadow: 0px 10px 30px #0891ecfb;
+    backdrop-filter: blur(10px);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    background: radial-gradient(circle, #e72f17 0%, #490c0a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    color: var(--gris-claro);
+}
+
+/* Tarjetas */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.card {
+    background-color: var(--gris-oscuro);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(92, 66, 66, 0.774);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px #0891ecfb;
+}
+
+.card-img {
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img img {
+    transform: scale(1.1);
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content h3 {
+    color: var(--azul-claro);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.card-content p {
+    color: var(--gris-claro);
+    margin-bottom: 1.5rem;
+}
+
+/*boton central*/
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    background: linear-gradient(10deg,#dbbf1d, #f2591d);
+    color: #f5e1cc;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(31, 120, 162, 0.3);
+}
+
+/* Formulario */
+.form-container {
+    background-color: var(--gris-oscuro);
+    border-radius: 10px;
+    padding: 2.5rem;
+    max-width: 600px;
+    margin: 3rem auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--morado-oscuro);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--azul-claro);
+    font-size: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--gris-claro);
+    font-weight: 500;
+}
+
+.form-group input, 
+.form-group textarea, 
+.form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: var(--negro);
+    border: 1px solid var(--morado-oscuro);
+    border-radius: 5px;
+    color: rgb(172, 28, 28);
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus, 
+.form-group select:focus {
+    outline: none;
+    border-color: var(--azul-medio);
+}
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--negro);
+    color: white;
+    border: 1px solid var(--gris-medio);
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.google-btn img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--gris-claro);
+}
+
+.form-footer a {
+    color: var(--azul-claro);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.form-footer a:hover {
+    color: var(--morado-claro);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, var(--morado-oscuro), var(--azul-oscuro));
+    color: rgb(107, 67, 67);
+    text-align: center;
+    padding: 3rem 2rem;
+    margin-top: 3rem;
+}
+
+/* Redes sociales */
+.social-container {
+    text-align: center;
+    padding: 20px;
+    background: #091016;
+}
+
+.social-container h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: rgb(203, 203, 207);
+    font-size: 18px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-link.facebook { background-color: #1877f2; }
+.social-link.twitter { background-color: #1da1f2; }
+.social-link.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+.social-link.tiktok {
+    background-color: #000000;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link.tiktok::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to bottom right, #25f4ee, #000000, #fe2c55);
+    opacity: 0.8;
+    transform: rotate(30deg);
+    z-index: 0;
+}
+
+.social-link.tiktok i { position: relative; z-index: 1; }
+.social-link.youtube { background-color: #ff0000; }
+
+.social-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.copyright {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+@keyframes tiktok-shine {
+    0% { transform: rotate(30deg) translateX(-100%); }
+    100% { transform: rotate(30deg) translateX(100%); }
+}
+
+.social-link.tiktok:hover::before {
+    animation: tiktok-shine 1.5s infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*ranking*/
+
+.ranking-container {
+    padding: 2rem;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    background-color: #111;
+    text-align: center;
+}
+
+.ranking-table {
+    width: 80%;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    background-color: #222;
+    color: #f0f0f0;
+    font-size: 0.8rem;
+}
+
+.ranking-table th, .ranking-table td {
+    border: 1px solid #555;
+    padding: 0.8rem;
+}
+
+.ranking-table th {
+    background-color: #d13a3a;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - JIGOKU</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        .loading {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .form-container { position: relative; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>¡Juega Ahora!</h1>
+        <!-- Apuntamos el action al PHP, pero como usamos fetch() da igual; sirve como fallback -->
+        <form id="registroForm" method="POST" action="registro.php">
+            <div class="form-group">
+                <label for="nickname">Nickname</label>
+                <input type="text" id="nickname" name="nickname" required>
+            </div>
+            <div class="form-group">
+                 <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+            <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="nacionalidad">Nacionalidad</label>
+                <select id="nacionalidad" name="nacionalidad" required>
+                    <option value="Colombia">Colombia</option>
+                    <option value="México">México</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="España">España</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Registrarse</button>
+            <a href="login.html" class="btn">Iniciar Sesión</a>
+        </form>
+    </div>
+
+    <!-- Indicador de carga -->
+    <div id="loading" class="loading"></div>
+
+    <!-- FIX: script para manejar fetch y evitar “undefined” -->
+    <script>
+      const form = document.getElementById('registroForm');
+      const loading = document.getElementById('loading');
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        loading.style.display = 'block';
+
+        try {
+          // Enviar al endpoint definido en el action
+          const resp = await fetch(form.getAttribute('action'), {
+            method: 'POST',
+            body: new FormData(form)
+          });
+
+          // Leer respuesta cruda y loguearla
+          const text = await resp.text();
+          console.log('Raw response:', text);
+
+          // Intentar parsear JSON
+          let data;
+          try {
+            data = JSON.parse(text);
+          } catch {
+            throw new Error('Respuesta no es JSON válido');
+          }
+          console.log('Parsed JSON:', data);
+
+          // Manejo de la respuesta
+          if (data.status === 'success') {
+            alert(data.message || '¡Registro exitoso!');
+          } else if (data.status === 'error') {
+            alert('Hubo un error: ' + (data.message || 'sin detalle'));
+          } else {
+            alert('Respuesta inesperada del servidor.');
+          }
+
+        } catch (err) {
+          console.error('Error en el flujo de registro:', err);
+          alert('Hubo un error de comunicación: ' + err.message);
+        } finally {
+          loading.style.display = 'none';
+        }
+      });
+    </script>
+</body>
+</html>
